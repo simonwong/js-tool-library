@@ -1,3 +1,52 @@
+
+function addLoadEvent(func){
+  var oldonload = window.onload;
+  if (typeof window.onload != 'function'){
+    window.onload = func;
+  }else {
+    window.onload = function(){
+      oldonload();
+      func();
+    }
+  }
+}
+//把一个节点插入到一个节点的后面
+function insertAfter(newElement,targetElement){
+  var parent = targetElement.parentNode;
+  if (parent.lastChild == targetElement) {
+    parent.appendChild(newElement);
+  }else {
+    parent.insertBefore(newElement,targetElement.nextSibling);
+  }
+}
+//添加一个class
+function addClass(element.value){
+	if(!element.className){
+		element.className = value;
+	}else {
+		newClassName = element.className;
+		newClassName+= " ";
+		newClassName+= value;
+		element.className = newClassName;
+	}
+}
+//给特定元素紧跟的下一个元素添加class
+function styleElementSibilings(tag.theclass){
+	if (!document.getElementsByTagName) return false;
+	var elems = document.getElementsByTagName(tag);
+	var elem;
+	for (var i=0; i<elems.length; i++){
+		elem = getNextElement(elems[i].nextSibling);
+		addClass(elem,theclass);
+	}
+}
+
+
+
+
+
+
+
 var eventUtil={
         //添加句柄
         addHandler:function(element,type,handler){//添加一个事件监听程序;;;;;进行“能力检测”
@@ -45,23 +94,3 @@ var eventUtil={
 }
 
 
-function insertAfter(newElement,targetElement){
-  var parent = targetElement.parentNode;
-  if (parent.lastChild == targetElement) {
-    parent.appendChild(newElement);
-  }else {
-    parent.insertBefore(newElement,targetElement.nextSibling);
-  }
-}
-
-function addLoadEvent(func){
-  var oldonload = window.onload;
-  if (typeof window.onload != 'function'){//如果处理函数未绑定任何函数，添加
-    window.onload = func;
-  }else {//如果已经有绑定的，在末尾追加
-    window.onload = function(){
-      oldonload();
-      func();
-    }
-  }
-}
