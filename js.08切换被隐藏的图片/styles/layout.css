@@ -1,0 +1,6 @@
+#slideshow {
+	width: 200px;
+	height: 400px;
+	position: relative;
+	overflow: hidden;/*使用hidden对超出的图片进行隐藏*/
+}
