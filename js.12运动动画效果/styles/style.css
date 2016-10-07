@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+#side_play{
+	width: 200px;
+	height: 200px;
+	background-color: #c93;
+	position: relative;
+	top: 50px;
+	left: -200px;
+}
+#side_bar{
+	display: block;
+	width:20px;
+	height: 60px;
+	color: 	#fff;
+	background-color: #006;
+	position: absolute;
+	top: 70px;
+	left: 200px;
+}
