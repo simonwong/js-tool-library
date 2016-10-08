@@ -52,6 +52,14 @@ function getByClass(className,parent){
   }
   return eles;
 }
+//获取样式
+function getStyle(obj,attr){
+  if(obj.currentStyle){
+    return obj.currentStyle[attr];//针对IE浏览器
+  }else{
+    return getComputedStyle(obj,false)[attr];//针对火狐浏览器
+  }
+}
 //移动效果，向左右上下移动
 function moveElement(elementID,final_x,final_y,interval){
   if (!document.getElementById) return false;
