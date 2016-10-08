@@ -19,7 +19,8 @@ function sidePlay(){
 	side.onmouseout = function(){
 		sideMove(-200);
 	}
-}	
+}
+//侧边栏匀速运动的封装，因为整合封装是缓冲运动，所以不注释
 function sideMove(target){
 	clearInterval(timerSide);
 	var side = document.getElementById("side_play")
@@ -73,12 +74,81 @@ function alphaChange(target){
 function sidePlayT(){
 	var side = document.getElementById("side_play_2")
 	side.onmouseover = function(){
-		sideMoveT(0);
+		startMove(side,"left",0);
 	}
 	side.onmouseout = function(){
-		sideMoveT(-400);
+		startMove(side,"left",-400);
 	}
 }
+//多个物体运动
+function boxThreePlay(){
+	var boxThree = document.getElementById("box_three_play");
+	var list = boxThree.getElementsByTagName("li");
+	for (var i=0; i<list.length; i++){
+		list[i].timerThree = null;
+		list[i].onmouseover = function(){
+			// boxPlay(this,400);
+			startMove(this,"width",400)
+		}
+		list[i].onmouseout = function(){
+			//boxPlay(this,200);
+			startMove(this,"width",200)
+		}
+	}
+}
+//多个物体渐变
+function boxFourAlpha(){
+	var boxFour = document.getElementById("box_four_alpha");
+	var list = boxFour.getElementsByTagName("li");
+	for(var i=0; i<list.length; i++){
+		list[i].timer = null;
+		list[i].alpha = 30;
+		list[i].onmouseover = function(){
+			startMove(this,"opacity",100);
+		}
+		list[i].onmouseout = function(){
+			startMove(this,"opacity",30);
+		}
+	}
+}
+//给多种样式变化做一个封装
+function startMove(obj,attr,iTarget){
+	clearInterval(obj.timer);
+	obj.timer = setInterval(function(){
+		var icur = 0;
+		if (attr == "opacity"){
+			icur = parseFloat(getStyle(obj,attr))*100;
+		}else{
+			icur = parseInt(getStyle(obj,attr));
+		}
+		var speed = (iTarget - icur)/10;
+		speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
+		if(icur == iTarget){
+			clearInterval(obj.timer);
+		}else{
+			if (attr == "opacity") {
+				obj.style.filter = 'alpha(opacity:'+(icur + speed)+')';
+				obj.style.opacity = (icur + speed)/100;
+			}else{
+			obj.style[attr] = icur + speed + "px";
+			}
+		}
+	},30)
+}
+//获取样式
+function getStyle(obj,attr){
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	}else{
+		return getComputedStyle(obj,false)[attr];
+	}
+}
+addLoadEvent(sidePlay);
+addLoadEvent(alphaPlay);
+addLoadEvent(sidePlayT);
+addLoadEvent(boxThreePlay);
+addLoadEvent(boxFourAlpha);
+/*原来的侧边栏2匀速运动的封装函数
 var timerT = null;
 function sideMoveT(target){
 	var side = document.getElementById("side_play_2")
@@ -93,20 +163,7 @@ function sideMoveT(target){
 		}
 	},20)
 }
-//多个物体运动
-function boxThreePlay(){
-	var boxThree = document.getElementById("box_three_play");
-	var list = boxThree.getElementsByTagName("li");
-	for (var i=0; i<list.length; i++){
-		list[i].timerThree = null;
-		list[i].onmouseover = function(){
-			boxPlay(this,400);
-		}
-		list[i].onmouseout = function(){
-			boxPlay(this,200);
-		}
-	}
-}
+这个是原来的多个物体运动的封装函数
 function boxPlay(obj,target){
 	clearInterval(obj.timerThree);
 	obj.timerThree = setInterval(function(){
@@ -119,20 +176,7 @@ function boxPlay(obj,target){
 		}
 	},20)
 }
-function boxFourAlpha(){
-	var boxFour = document.getElementById("box_four_alpha");
-	var list = boxFour.getElementsByTagName("li");
-	for(var i=0; i<list.length; i++){
-		list[i].timerFour = null;
-		list[i].alpha = 30;
-		list[i].onmouseover = function(){
-			boxFourPlay(this,100);
-		}
-		list[i].onmouseout = function(){
-			boxFourPlay(this,30);
-		}
-	}
-}
+多个物体渐变的封装
 function boxFourPlay(obj,target){
 	clearInterval(obj.timerFour);
 	obj.timerFour = setInterval(function(){
@@ -150,9 +194,4 @@ function boxFourPlay(obj,target){
 			obj.style.opacity = obj.alpha/100;
 		}
 	},30)
-}
-addLoadEvent(sidePlay);
-addLoadEvent(alphaPlay);
-addLoadEvent(sidePlayT);
-addLoadEvent(boxThreePlay);
-addLoadEvent(boxFourAlpha);
+}*/
