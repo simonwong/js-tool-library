@@ -81,3 +81,15 @@
 	filter:alpha(opacity:30);
 	opacity:0.3;
 }
+#box_change{
+	width: 200px;
+	height: 200px;
+	background-color: #909;
+	margin:-200px 0 0 600px;
+}
+#box_change_t{
+	width: 200px;
+	height: 200px;
+	background-color: #090;
+	margin-top:50px;
+}

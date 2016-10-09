@@ -100,7 +100,44 @@ function moveElement(elementID,final_x,final_y,interval){
 	var repeat = "moveElement('"+elementID+"',"+final_x+","+final_y+","+interval+")";
 	elem.movement = setTimeout(repeat,interval);
 }
-
+//物体长，宽，透明度等等的运动
+function startMove(obj,json,fn){
+  clearInterval(obj.timer);
+  obj.timer = setInterval(function(){
+    var flag = true//假设
+    for (var attr in json){
+      //1取当前的值
+      var iCur = 0;
+      if (attr == "opacity"){
+        iCur = Math.round(parseFloat(getStyle(obj,attr))*100);
+      }else{
+        iCur = parseInt(getStyle(obj,attr));
+      }
+      //2算速度
+      var iSpeed = (json[attr] - iCur)/10;
+      iSpeed = iSpeed>0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+      //3如果运动还没完全走完，flag假设不成立，继续
+      if(iCur != json[attr]){
+        flag = false;
+      }
+      //执行
+      if (attr == "opacity") {
+        obj.style.filter = 'alpha(opacity:'+(iCur + iSpeed)+')';
+        obj.style.opacity = (iCur + iSpeed)/100;
+      }else{
+        obj.style[attr] = iCur + iSpeed + "px";
+      }
+    }
+    //如果flag成立，停止
+    if (flag) {
+      clearInterval(obj.timer);
+      if (fn) {
+        fn();
+      }
+    }
+    
+  },30)
+}
 
 //添加一个事件监听程序，进行“能力检测”
 function addHandler:(element,type,handler){

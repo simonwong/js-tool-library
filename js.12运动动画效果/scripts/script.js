@@ -9,8 +9,17 @@ function addLoadEvent(func){
     }
   }
 }
-var timerSide = null
+//获取样式
+function getStyle(obj,attr){
+	if (obj.currentStyle) {
+		return obj.currentStyle[attr];
+	}else{
+		return getComputedStyle(obj,false)[attr];
+	}
+}
+
 //侧边栏动画
+var timerSide = null
 function sidePlay(){
 	var side = document.getElementById("side_play")
 	side.onmouseover = function(){
@@ -74,10 +83,10 @@ function alphaChange(target){
 function sidePlayT(){
 	var side = document.getElementById("side_play_2")
 	side.onmouseover = function(){
-		startMove(side,"left",0);
+		startMove(side,{left:0});
 	}
 	side.onmouseout = function(){
-		startMove(side,"left",-400);
+		startMove(side,{left:-400});
 	}
 }
 //多个物体运动
@@ -88,11 +97,11 @@ function boxThreePlay(){
 		list[i].timerThree = null;
 		list[i].onmouseover = function(){
 			// boxPlay(this,400);
-			startMove(this,"width",400)
+			startMove(this,{width:400})
 		}
 		list[i].onmouseout = function(){
 			//boxPlay(this,200);
-			startMove(this,"width",200)
+			startMove(this,{width:200})
 		}
 	}
 }
@@ -104,50 +113,81 @@ function boxFourAlpha(){
 		list[i].timer = null;
 		list[i].alpha = 30;
 		list[i].onmouseover = function(){
-			startMove(this,"opacity",100);
+			startMove(this,{opacity:100});
 		}
 		list[i].onmouseout = function(){
-			startMove(this,"opacity",30);
+			startMove(this,{opacity:30});
 		}
 	}
 }
-//给多种样式变化做一个封装
-function startMove(obj,attr,iTarget){
+//链试运动
+function boxChange(){
+	var boxC = document.getElementById("box_change");
+	boxC.onmouseover = function(){
+		startMove(boxC,{width:400},function(){
+			startMove(boxC,{height:400})
+		})
+	}
+	boxC.onmouseout = function(){
+		startMove(boxC,{height:200},function(){
+			startMove(boxC,{width:200})
+		})
+	}
+}
+//一起变的盒子
+function boxChangeT(){
+	var boxCT = document.getElementById("box_change_t");
+	boxCT.onmouseover = function(){
+		startMove(boxCT,{width:400,height:100,opacity:30});
+	}
+	boxCT.onmouseout = function(){
+		startMove(boxCT,{width:200,height:200,opacity:100});
+	}
+}
+function startMove(obj,json,fn){
 	clearInterval(obj.timer);
 	obj.timer = setInterval(function(){
-		var icur = 0;
-		if (attr == "opacity"){
-			icur = parseFloat(getStyle(obj,attr))*100;
-		}else{
-			icur = parseInt(getStyle(obj,attr));
-		}
-		var speed = (iTarget - icur)/10;
-		speed = speed>0 ? Math.ceil(speed) : Math.floor(speed);
-		if(icur == iTarget){
-			clearInterval(obj.timer);
-		}else{
-			if (attr == "opacity") {
-				obj.style.filter = 'alpha(opacity:'+(icur + speed)+')';
-				obj.style.opacity = (icur + speed)/100;
+		var flag = true//假设
+		for (var attr in json){
+			//1取当前的值
+			var iCur = 0;
+			if (attr == "opacity"){
+				iCur = Math.round(parseFloat(getStyle(obj,attr))*100);
 			}else{
-			obj.style[attr] = icur + speed + "px";
+				iCur = parseInt(getStyle(obj,attr));
+			}
+			//2算速度
+			var iSpeed = (json[attr] - iCur)/10;
+			iSpeed = iSpeed>0 ? Math.ceil(iSpeed) : Math.floor(iSpeed);
+			//3如果运动还没完全走完，flag假设不成立，继续
+			if(iCur != json[attr]){
+				flag = false;
+			}
+			//执行
+			if (attr == "opacity") {
+				obj.style.filter = 'alpha(opacity:'+(iCur + iSpeed)+')';
+				obj.style.opacity = (iCur + iSpeed)/100;
+			}else{
+				obj.style[attr] = iCur + iSpeed + "px";
 			}
 		}
+		//如果flag成立，停止
+		if (flag) {
+			clearInterval(obj.timer);
+			if (fn) {
+				fn();
+			}
+		}
+		
 	},30)
-}
-//获取样式
-function getStyle(obj,attr){
-	if (obj.currentStyle) {
-		return obj.currentStyle[attr];
-	}else{
-		return getComputedStyle(obj,false)[attr];
-	}
 }
 addLoadEvent(sidePlay);
 addLoadEvent(alphaPlay);
 addLoadEvent(sidePlayT);
 addLoadEvent(boxThreePlay);
 addLoadEvent(boxFourAlpha);
+addLoadEvent(boxChange);
+addLoadEvent(boxChangeT);
 /*原来的侧边栏2匀速运动的封装函数
 var timerT = null;
 function sideMoveT(target){
