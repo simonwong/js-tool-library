@@ -204,3 +204,44 @@ $("div").filter(".url");//class为url的所有div
 $("div").not(".url");//class不为url的所有div
 
 //============================================================================================
+
+//Ajax
+$.ajax({name:value,name:value,...})
+//AJAX load()方法
+$(selector).load(URL,data,callback)//从服务器加载数据，并把返回的数据放入被选元素中
+//必需的URL参数，希望加载的url
+//可选的data参数，与请求一同发送的查询字符串键/值对集合
+$("#div1").load("demo_test.txt");
+$("#div1").load("demo_test.txt #p1");//demo_test.txt文件中id为p1的元素内容
+//callback回调函数可以设置不同的参数
+responseTxt//包含调用成功时的结果内容
+statusTxt//调用的状态
+xhr//包含XMLHttpRequest对象
+$("button").click(funciton(){
+	$("#div1").load("demo_test.txt",function(responseTxt,statusTxt,xhr){
+		if(statusTxt == "success")
+			alert("外部加载成功");
+		if (statusTxt == "error")
+			alert("Error: "+xhr.status+" : " + xhr.statusTxt);
+	})
+})
+
+//HTTP请求
+$.get(URL,callback);//从服务器上请求数据
+$.post(URL,data,callback);//向指定资源提交要处理的数据
+
+
+//如果使用其他js框架也是使用$符号的
+$.noConflict();//方法会释放$标识符的控制
+//可以用jQuery全名来代替；
+jQuery("button")...
+//或者存入变量var
+var jq = $.noConflict()
+//把$符号作为变量传递给ready方法，那么在函数里面就可以使用$
+jQuery(document).ready(function($){
+	$("button")
+})
+
+//JSONP，可以让网页从别的域名那获取资料，即跨域读取数据
+//因为现在所有支持js的浏览器都会使用同源策略。所以要用JSONP
+
