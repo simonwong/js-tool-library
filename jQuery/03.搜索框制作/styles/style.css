@@ -1,0 +1,65 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color: #333;
+}
+.bg_div{
+	background-image: url(../images/river.jpg);
+	width: 1300px;
+	height: 650px;
+	margin: 0 auto;
+}
+.bg_div .search_box{
+	position: absolute;
+    top: 150px;
+    left: 200px;
+}
+.bg_div .search_box .logo{
+	background: url(../images/logo.png) no-repeat;
+	margin: -4px 18px 0 0;
+    height: 53px;
+    width: 107px;
+    float: left;
+}
+.bg_div .search_box form{
+	float: left;
+    background-color: #fff;
+    padding: 5px;
+}
+.bg_div .search_box form .search_text{
+	height: 25px;
+    line-height: 25px;
+    font-size: 20px;
+    float: left;
+    width: 350px;
+    border: 0;
+    outline: none;
+}
+.bg_div .search_box form .search_button{
+	background-image: url(../images/search-button.png);
+    width: 29px;
+    height: 29px;
+    float: left;
+    border: 0;
+}
+.suggest{
+	width: 388px;
+	background-color: #fff;
+	border: 1px solid #999;
+	display: none;
+}
+.suggest ul{
+	list-style: none;
+}
+.suggest ul li{
+	padding: 3px;
+	font-size: 16px;
+	line-height: 25px;
+	cursor: pointer;
+}
+.suggest ul li:hover{
+	text-decoration: underline;
+	background-color: #e5e5e5;
+}
