@@ -1,0 +1,81 @@
+@font-face{
+font-family: iconfont;
+src: url(http://g.tbcdn.cn/tb/icon-font/1.1.5/iconfont.eot);
+}
+*{
+padding: 0;
+margin: 0;
+}
+.search-{
+margin-top: 10px;
+}
+a{
+text-decoration: none;
+font-size: 14px;
+color: #999;
+}
+.search-tips{
+float: right;
+padding: 5px 10px 0 16px;
+}
+.search-button{
+float: right;
+}
+.btn-search{
+background: #F63;
+width: 100px;
+height: 45px;
+color: #FFF;
+font-size: 18px;
+border: 0;
+cursor: pointer;
+text-align: center;
+line-height: 45px;
+}
+.search-common-pannel input{
+height: 39px;
+line-height: 39px;
+width: 100%;
+border: 0 none;
+outline: 0;
+background: #FFF;
+}
+.search-common-pannel{
+height: 39px;
+background: #F50;
+overflow: hidden;
+padding: 3px 0 3px 76px;
+}
+ul{
+list-style: none;
+display: block;
+}
+.search-box{
+position: absolute;
+top: 13px;
+left: 2px;
+width: 74px;
+height: 39px;
+overflow: hidden;
+background: #FFF;
+display: block;
+}
+.search-box li{
+display: none;
+height: 39px;
+line-height: 39px;
+overflow: hidden;
+text-align: center;
+border: 1px solid #CCC;
+border-top: none;
+}
+.search-box .selected{
+background: #e5e5e5;
+display: block;
+}
+.trigger-hover{
+height: auto;
+}
+.trigger-hover li{
+display: block;
+}
