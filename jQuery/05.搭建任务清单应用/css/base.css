@@ -1,0 +1,67 @@
+*{
+	font-family: "Microsoft Yahei";
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+body{
+	background: #00334b;
+	color: #fff;
+}
+/*总容器*/
+.container{
+	max-width: 900px;
+	margin: 0 auto;
+}
+/*大标题*/
+h1{
+	text-align: center;
+}
+/*输入框*/
+.add-task input{
+	float: left;
+	width: 84%;
+	margin-right: 1%;
+}
+.add-task button{
+	width: 15%;
+}
+input,.task-item,button{
+	border-radius: 3px;
+	padding: 10px;
+}
+input[type=text],input[type=data]{
+	border: 0;
+	display: block;
+	width:100%；
+}
+button{
+	border: 0;
+}
+
+/*清单列表*/
+.task-list{
+	margin: 5px 0;
+}
+.task-list input{
+	float: left;
+
+}
+/*清单列表项*/
+.task-item{
+	background: #fff;
+	color: #333;
+	margin-bottom: 2px;
+	-webkit-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+	-moz-box-shadow: 0 2px 3px rgba(0,0,0,.4);
+	box-shadow: 0 2px 3px rgba(0,0,0,.4);
+	cursor: pointer;
+	-webkit-transition: background .2s;
+	-moz-transition: background .2s;
+	-ms-transition: background .2s;
+	-o-transition: background .2s;
+	transition: background .2s;
+}
+.task-item:hover{
+	background: #ddd;
+}
