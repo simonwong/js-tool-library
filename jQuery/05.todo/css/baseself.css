@@ -96,6 +96,9 @@ h1{
 	-o-transition: background .2s;
 	transition: background .2s;
 }
+/*.task-item [type=checkbox]{
+	
+}*/
 .task-item .task-content{
 	padding-left: 8px;
 }
@@ -119,6 +122,20 @@ h1{
 	-o-transition: background .3s;
 	transition: background .3s;
 }
+.task-item .completed{
+	color: #aaa;
+	opacity: 0.4;
+}
+.task-item .completed:after{
+	content: "";
+	display: block;
+	height: 1px;
+	background: #aaa;
+	width: 90%;
+	position: relative;
+	right: 0;
+	top: -8px;
+}
 /*任务详情*/
 .task-detail{
 	border-radius: 5px;
@@ -140,7 +157,18 @@ h1{
 	margin: 0 0 10px 0;
 	font-weight: 900;
 	cursor: pointer;
-	margin-bottom: 10px;
+	padding: 10px;
+}
+.task-detail .content-input{
+	margin: 0 0 8px 0;
+	font-weight: 900;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #aaa;
+	outline: none;
+	padding: 10px;
+	display: none;
 }
 .task-detail .desc{
 	background: #eee;
@@ -160,6 +188,7 @@ h1{
 	-o-transition: background .2s;
 	transition: background .2s;
 }
+
 .remind input{
 	float: left;
 	border-radius: 5px;

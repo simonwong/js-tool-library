@@ -1,0 +1,270 @@
+* {
+	font-family: "Microsoft Yahei";
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-webkit-transition: background .3s;
+	-moz-transition: background .3s;
+	-ms-transition: background .3s;
+	-o-transition: background .3s;
+	transition: background .3s;
+	outline: 0;
+}
+body {
+	background: #00334b;
+	color: #fff;
+}
+.add-task input,
+.add-task button,
+.task-item{
+	-webkit-box-shadow: 3px 3px 5px rgba(0,0,0,.4);
+	-moz-box-shadow: 3px 3px 5px rgba(0,0,0,.4);
+	box-shadow: 3px 3px 5px rgba(0,0,0,.4);
+}
+.add-task input,
+.add-task button,
+.task-item,
+.remind button,
+.confirm,
+.cancel{
+	border-radius: 5px;
+	padding: 10px;
+}
+/*总容器*/
+.container {
+	max-width: 900px;
+	margin: 0 auto;
+	position: relative;
+	padding: 0 10px;
+}
+/*大标题*/
+h1 {
+	text-align: center;
+}
+/*输入框*/
+.add-task{
+	margin-bottom: 10px;
+}
+.add-task input{
+	display: inline-block;
+	float: left;
+	width: 84%;
+	margin-right: 1%;
+	background: #eee;
+	border: 0;
+	outline: none;
+}
+.add-task input:focus,
+.add-task input:hover{
+	background: #fff;
+}
+.add-task button{
+	background: #276e90;
+	width: 15%;
+	border: 0;
+	cursor: pointer;
+	color: #fff;
+}
+@media screen and (max-width: 400px){
+	.add-task button{
+		font-size: 12px;
+	}
+}
+.add-task button:hover{
+	background: #3994bf;
+}
+/*清单列表*/
+.task-list{
+	margin: 5px 0;
+}
+/*清单列表项*/
+.task-item{
+	background: #eee;
+	color: #333;
+	margin-bottom: 5px;
+	cursor: pointer;
+}
+.task-item:hover{
+	background: #fff;
+}
+.task-item .task-content{
+	padding-left: 8px;
+}
+.task-item .action{
+	border-radius: 5px;
+	padding: 4px;
+	color: #fff;
+	font-size: 80%;
+	margin-right: 15px;
+	float: right;
+	background: #276e90;
+	-webkit-box-shadow: 2px 2px 3px rgba(0,0,0,.4);
+	-moz-box-shadow: 2px 2px 3px rgba(0,0,0,.4);
+	box-shadow: 2px 2px 3px rgba(0,0,0,.4);
+}
+.task-item .action:hover{
+	background: #3994bf;
+}
+.task-list .completed{
+	color: #aaa;
+	opacity: 0.4;
+}
+.task-list .completed:after{
+	content: "";
+	display: block;
+	height: 1px;
+	background: #aaa;
+	width: 98%;
+	float: right;
+	position: relative;
+	top: -12px;
+}
+/*任务详情*/
+.task-detail{
+	border-radius: 5px;
+	background: #fff;
+	color: #333;
+	min-width: 30%;
+	height: 250px;
+	padding: 20px 10px;
+	position: fixed;
+	top: 20%;
+	right: 15%;
+	z-index: 2;
+	-webkit-box-shadow: -3px 3px 5px rgba(0,0,0,.4);
+	-moz-box-shadow: -3px 3px 5px rgba(0,0,0,.4);
+	box-shadow: -3px 3px 5px rgba(0,0,0,.4);
+	display: none;
+}
+.task-detail .content{
+	margin: 0 0 10px 0;
+	font-weight: 900;
+	cursor: pointer;
+	padding: 10px;
+}
+.task-detail .content-input{
+	margin: 0 0 8px 0;
+	font-weight: 900;
+	cursor: pointer;
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #aaa;
+	outline: none;
+	padding: 10px;
+	display: none;
+}
+.task-detail .desc{
+	background: #eee;
+	border-radius: 5px;
+	width: 100%;
+	min-height: 100px;
+	padding: 10px;
+	margin-bottom: 10px;
+	outline: none;
+}
+.task-detail .desc:focus,
+.task-detail .desc:hover{
+	background: #fff;
+}
+/*任务提醒板块*/
+.remind input{
+	float: left;
+	border-radius: 5px;
+	width: 65%;
+	outline: none;
+	border: 1px solid #aaa;
+	padding: 7px;
+}
+.remind button{
+	float: right;
+	width: 30%;
+	background: #276e90;
+	color: #fff;
+	border: 0;
+	cursor: pointer;
+}
+.remind button:hover{
+	background: #3994bf;
+}
+.remind label{
+	display: block;
+	margin-bottom: 5px;
+	padding-left: 8px;
+	color: #666;
+}
+/*遮罩*/
+.task-detail-mask{
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(30,30,30,.6);
+	z-index: 1;
+	display: none;
+}
+.pop-alert{
+	color: #333;
+	width: 300px;
+	height: auto;
+	padding: 15px 10px;
+	background: #fff;
+	position: fixed;
+	border-radius: 5px;
+	box-shadow: 0 1px 2px rgba(0,0,0,.5);
+}
+.pop-alert .pop-title{
+	font-weight: 900;
+	font-size: 20px;
+	text-align: center;
+	margin: 15px 0;
+}
+.pop-alert .pop-content{
+	padding: 5px 10px;
+	text-align: center;
+}
+/*alert确定按钮*/
+.confirm,
+.cancel{
+	-webkit-box-shadow: 1px 1px 3px rgba(0,0,0,.4);
+	-moz-box-shadow: 1px 1px 3px rgba(0,0,0,.4);
+	box-shadow: 1px 1px 3px rgba(0,0,0,.4);
+	cursor: pointer;
+	color: #fff;
+	border: 0;
+	width: 40%;
+}
+.confirm{
+	background: #276e90;
+}
+.confirm:hover{
+	background: #3994bf;
+}
+/*alert取消按钮*/
+.cancel{
+	background: #333;
+}
+.cancel:hover{
+	background: #666;
+}
+.msg {
+    display: none;
+    text-align: center;
+    background: #ffe264;
+    padding: 10px;
+    color: #333;
+}
+.anchor {
+    cursor: pointer;
+}
+.alerter {
+    width: 0;
+    height: 0;
+}
+
+#Statement{
+	margin-top: 60px;
+	width: 100%;
+	text-align: center;
+	line-height: 25px;
+}
