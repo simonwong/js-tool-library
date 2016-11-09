@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+	<form>
+		<div>
+			<label>会员名：</label>
+			<input type="text" class="text" name="username">
+			<p class="tip" id="tip1">
+				5-25个字符，一个汉字为两个字符，推荐使用中文会员名
+			</p>
+			<span></span>
+			<p class="count" id="cou1">0个字符</p>
+		</div>
+		<div>
+			<label>登录密码：</label>
+			<input type="password" class="text" name="password">
+			<p class="tip" id="tip2">
+				<i class="err"></i>
+				5-25个字符，一个汉字为两个字符，推荐使用中文会员名
+			</p>
+			<span></span>
+			<p class="count" id="cou2">
+				<em class="active">弱</em><em>中</em><em>强</em>
+			</p>
+		</div>
+		<div>
+			<label>确认密码：</label>
+			<input type="password" class="text" name="password" disabled="disabled">
+			<p class="tip" id="tip3">
+				再输入一次密码
+			</p>
+		</div>
+		<input class="submit-btn" type="button" name="sub" value="同意协议并注册">
+	</form>
+
+	<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>
