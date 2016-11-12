@@ -1,0 +1,11 @@
+body,html {
+	margin: 0;
+	padding: 0;
+}
+#alert11,
+#confirm11,
+#prompt11,
+#common11{
+	margin: 50px 0 0 50px;
+}
+
