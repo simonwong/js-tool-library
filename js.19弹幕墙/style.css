@@ -1,0 +1,62 @@
+.b_box {
+	  border: 1px solid rgb(229, 229, 229);
+}
+
+.b_box .b_mask {
+  width: 100%;
+  height: 380px;
+}
+
+.b_box .b_show div {
+  font-size: 22px;
+  line-height: 36px;
+  font-weight: 500;
+  color: #fff;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+/*.b_box div {
+	height: 40px;
+	position: relative;
+	overflow: hidden;
+}
+	*/
+.b_control {
+	width: 400px;
+	margin: 20px auto;
+}
+.b_control .b_inputs {
+	font-size: 0;
+}
+.b_control .b_inputs input {
+	box-sizing: border-box;
+	font-size: 16px;
+	height: 30px;
+}
+.b_text {
+	width: 400px;
+	padding: 5px 10px;
+}
+.b_push,
+.b_clear {
+	width: 120px;
+	letter-spacing: 0.5em;
+	cursor: pointer;
+	padding: 0;
+	margin-top: 10px;
+	background: #fff;
+	text-align: center;
+	outline: none;
+}
+.b_push {
+	border: 1px solid #c36000;
+	margin-right: 100px;
+	margin-left: 30px;
+	color: #c36000;
+}
+.b_clear {
+	border: 1px solid #04b9ae;
+	margin-right: 30px;
+	color: #04b9ae;
+}
