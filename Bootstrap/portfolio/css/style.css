@@ -1,0 +1,111 @@
+/*通用*/
+body
+{
+    background: #e7e7e7;
+}
+
+/*导航*/
+.container-fluid
+{
+    padding: 0 100px;
+}
+
+/*首页*/
+.jumbotron
+{
+    height: 768px;
+    margin-top: 50px;
+
+    background: url(../img/bg.jpg) no-repeat fixed;
+    -webkit-background-size: cover;
+            background-size: cover;
+}
+
+.jumbotron .container
+{
+    text-align: center;
+}
+
+@media (max-width: 767px)
+{
+    .intro-social-buttons > li
+    {
+        display: block;
+
+        margin-bottom: 20px;
+        padding: 0;
+    }
+}
+
+/*关于我*/
+#aboutme
+{
+    min-height: 600px;
+}
+#aboutme .aboutme-img
+{
+    width: 300px;
+    height: 500px;
+}
+
+/*产品展示*/
+#portfolio
+{
+    background: #ccc;
+    padding: 20px 0;
+}
+.portfolio_box {
+	box-sizing: border-box;
+	padding: 20px;
+	border-bottom: 5px solid rgba(0, 0, 0, 0.3);
+	transition: all 0.5s;
+}
+.portfolio_box:hover {
+	border-bottom: 5px solid rgba(0, 0, 0, 1);
+}
+.portfolio_wrap {
+	border: 4px solid rgba(0, 0, 0, 0.5);
+	padding: 10px;
+	text-align: center;
+	border-radius: 6px;
+	transition: all 0.5s;
+}
+.portfolio_wrap:hover {
+	border: 4px solid #000;
+	box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.5);
+}
+.portfolio_wrap img{
+	width: 200px;
+	height: 200px;
+}
+/*脚部*/
+
+footer
+{	
+	margin-top: 20px;
+	padding-top: 20px;
+    height: 150px;
+    background: #000;
+}
+footer .breadcrumb
+{
+    background-color: #000;
+}
+footer .breadcrumb a,
+footer p
+{
+    color: #fff;
+}
+footer p {
+	margin-top: 40px;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
