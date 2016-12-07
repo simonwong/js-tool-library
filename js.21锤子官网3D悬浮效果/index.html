@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>3D悬浮效果</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+</head>
+<body>
+<script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+
+  <div id="test">
+    <div id="banner" >banner</div>
+  </div>
+
+<script>
+$('#test').on('mousemove', function(e){
+
+  var offset = $('#test').offset()
+  
+  var x = e.pageX - offset.left
+  var y = e.pageY - offset.top
+  
+  
+  var centerX = $('#test').outerWidth() /2
+  var centerY = $('#test').outerHeight() /2 
+  
+  var deltaX = x - centerX
+  var deltaY = y - centerY
+  
+  var percentX = deltaX / centerX
+  var percentY = deltaY / centerY
+  
+  var deg = 10
+  
+  
+  
+  $('#banner').css({
+    transform: 'rotateX('+deg*-percentY + 'deg)'+
+    ' rotateY('+deg*percentX+'deg)'
+  })
+})
+
+$('#test').on('mouseleave', function(){
+  $('#banner').css({
+    transform: ''
+  })
+})
+</script>
+</body>
+</html>
