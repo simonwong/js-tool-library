@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>全屏切换demo</title>
+  <link rel="stylesheet" href="css/index.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: Arial,"Microsoft YaHei",sans-serif;
+      height: 100%;
+      overflow: hidden;
+    }
+    html {
+      height: 100%;
+    }
+    #wrapper,
+    #wrapper section {
+      height: 100%;
+      position: relative;
+    }
+    section.active {
+
+    }
+    .section_1 {
+      background: #fd6e6e;
+    }
+    .section_2 {
+      background: #32425c;
+    }
+    .section_3 {
+      background: #ffc700;
+    }
+    .section_4 {
+      background: #535a6c;
+    }
+    .section_5 {
+      background: #28d8b3
+    }
+    .intro {
+      height: 100%;
+      text-align: center;
+      position: relative;
+    }
+    .intro span {
+      font-size: 30px;
+      color: #fff;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+              transform: translate(-50%, -50%);
+    }
+  </style>
+</head>
+<body>
+  <div id="wrapper">
+    <section class="section_1 active">
+      <div class="intro">
+        <span>section_1 #fd6e6e</span>
+      </div>
+    </section>
+    <section class="section_2">
+      <div class="intro">
+        <span>section_2 #32425c</span>
+      </div>
+    </section>
+    <section class="section_3">
+      <div class="intro">
+        <span>section_3 #ffc700</span>
+      </div>
+    </section>
+    <section class="section_4">
+      <div class="intro">
+        <span>section_4 #535a6c</span>
+      </div>
+    </section>
+    <section class="section_5">
+      <div class="intro">
+        <span>section_5 #28d8b3</span>
+      </div>
+    </section>
+  </div>
+  
+  <script>
+    let isMoving = false;
+    let pageH = document.documentElement.clientHeight || document.body.clientHeight;
+    let allHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+    let current = window.pageYOffset;
+
+    window.onresize = function () {
+      pageH = document.documentElement.clientHeight || document.body.clientHeight;
+      allHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+      current = window.pageYOffset;
+    }
+    
+    function scrollFunc (event) {
+      event = event || window.event;
+      if (isMoving) {
+        return;
+      } else {
+        // 滚轮事件，IE，chrome：wheeldelta，firefox：detail
+        // 当页面向上滚动
+        current = window.pageYOffset;
+        if (event.wheelDelta > 0 || event.detail < 0) {
+          if (current == 0) {
+            return
+          }
+          pageScroll(-1, current);
+        }
+        // 向下滚动
+        if (event.wheelDelta < 0 || event.detail > 0) {
+          if (current == (allHeight - pageH)) {
+            return
+          }
+          pageScroll(1, current);
+        }
+      }
+    }
+
+    // 火狐浏览器的滚轮事件
+    if (document.addEventListenner) {
+      document.addEventListenner('DOMMouseScroll', scrollFunc, false);
+    }
+
+    // 滚动时执行函数
+    // window.onmousewheel = document.onmousewheel = scrollFunc;
+    window.onmousewheel = scrollFunc;
+
+    // 滚动页面函数
+    let timer = null;
+    function pageScroll (speed, current) {
+      
+      isMoving = true;
+      if (speed > 0) {
+        let allH = current + pageH
+
+        timer = setInterval(function () {
+          let cur = window.pageYOffset;
+          window.scrollTo(0, cur + speed);
+          if (cur > (allH - (pageH / 2))) {
+            speed--;
+          } else {
+            speed++;
+          }
+          if (cur >= allH) {
+            clearInterval(timer);
+            window.scrollTo(0, allH);
+            isMoving = false;
+          }
+        }, 15)
+
+      } else {
+        let allH = current - pageH;
+
+        timer = setInterval(function () {
+          let cur = window.pageYOffset;
+          window.scrollTo(0, cur + speed);
+          if (cur < (allH + (pageH / 2))) {
+            speed++;
+          } else {
+            speed--;
+          }
+          if (cur <= allH) {
+            clearInterval(timer);
+            window.scrollTo(0, allH);
+            isMoving = false;
+          }
+        }, 15)
+      }
+    }
+  </script>
+</body>
+</html>
