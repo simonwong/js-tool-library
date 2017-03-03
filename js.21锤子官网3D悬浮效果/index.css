@@ -7,7 +7,8 @@ div#test{
   margin: 100px auto;
   border: 1px solid #ddd;
   
-  perspective: 1000px;
+  -webkit-perspective: 1000px;
+          perspective: 1000px;
 }
 
 #banner{
@@ -15,7 +16,10 @@ div#test{
   width: 400px;
   margin: 0 auto;
   background:  #37D7B2;
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
   transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
   box-shadow: 0 0 15px rgba(0,0,0,0.25);
   text-align: center;
   line-height: 300px;
