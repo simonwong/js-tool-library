@@ -17,24 +17,20 @@
 	<div class="container"><!-- 总容器开始 -->
 		<h1>My Todo</h1>
 		<form class="add-task">
-			<input name="content" type="text" placeholder="e.g. 下午带上尤克里里去图书馆打球" autofocus autocomplete="off">
+			<input class="task-input" name="content" type="text" placeholder="e.g. 下午带上尤克里里去图书馆打球" autofocus autocomplete="off">
 			<button type="submit">TODO</button>
 		</form>
-		<div class="task-list"><!--清单列表开始-->
-		</div><!--清单列表结束-->
+		<ul class="task-list"><!--清单列表开始-->
+		</ul><!--清单列表结束-->
 		
 		<div class="task-detail"><!-- 任务详情开始 -->
 		</div><!-- 任务详情结束 -->
 	</div><!-- 总容器结束 -->
 <div class="task-detail-mask"></div>
-<footer id="Statement">
-	<p>My Todo，网页版待办事项、日程管理应用，百万用户的选择（不要笑！）<br />日程提醒，行程安排，购物清单</p>
-</footer>
-	<video class="alerter" src="alert.mp3"></video>
+<video class="alerter" src="alert.mp3"></video>
 
 	<script src="node_modules/jquery/dist/jquery.js"></script>
 	<script src="node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full.js"></script>
-	<script src="node_modules/store/store.js"></script>
-	<script src="js/base.js"></script>
+	<script src="js/index.js"></script>
 </body>
 </html>

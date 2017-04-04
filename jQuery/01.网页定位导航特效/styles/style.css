@@ -38,25 +38,29 @@
 	padding: 20px 50px;
 
 }
-#content h1{
+#content h1 {
 	font-size: 40px;
 	margin-bottom: 20px;
 }
-#content .item{
+.item {
 	background-color: #ddd;
 	padding: 20px 20px 20px 20px;
 	margin-bottom: 30px;
 }
-#content .item p{
+.item p {
 	font-size: 26px;
 	padding-bottom: 10px;
 	border-bottom: 2px solid #0088bb;
 	margin-bottom: 20px;
 }
-#content .item ul li{
+.item ul li {
 	list-style: none;
-	display: inline;
+	display: inline-block;
 }
-#content .item ul li img{
+.item a {
+	display: block;
+	height: 200px;
+	width: 150px;
 	margin: 10px;
+	background: #aaa;
 }

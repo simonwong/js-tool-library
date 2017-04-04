@@ -11,7 +11,7 @@
 	outline: 0;
 }
 body {
-	background: #00334b;
+	background: #009688;
 	color: #fff;
 }
 .add-task input,
@@ -59,7 +59,7 @@ h1 {
 	background: #fff;
 }
 .add-task button{
-	background: #276e90;
+	background: #00cfbc;
 	width: 15%;
 	border: 0;
 	cursor: pointer;
@@ -71,17 +71,20 @@ h1 {
 	}
 }
 .add-task button:hover{
-	background: #3994bf;
+	background: #00ac9c;
 }
 /*清单列表*/
 .task-list{
 	margin: 5px 0;
+	padding: 0;
+	list-style: none;
 }
 /*清单列表项*/
 .task-item{
 	background: #eee;
 	color: #333;
 	margin-bottom: 5px;
+	position: relative;
 	cursor: pointer;
 }
 .task-item:hover{
@@ -97,27 +100,26 @@ h1 {
 	font-size: 80%;
 	margin-right: 15px;
 	float: right;
-	background: #276e90;
+	background: #00cfbc;
 	-webkit-box-shadow: 2px 2px 3px rgba(0,0,0,.4);
 	-moz-box-shadow: 2px 2px 3px rgba(0,0,0,.4);
 	box-shadow: 2px 2px 3px rgba(0,0,0,.4);
 }
 .task-item .action:hover{
-	background: #3994bf;
+	background: #00ac9c;
 }
-.task-list .completed{
+.task-item.completed {
 	color: #aaa;
-	opacity: 0.4;
+	opacity: 0.9;
 }
-.task-list .completed:after{
+.task-item.completed:after{
 	content: "";
 	display: block;
 	height: 1px;
-	background: #aaa;
+	background: #666;
 	width: 98%;
-	float: right;
-	position: relative;
-	top: -12px;
+	position: absolute;
+	top: 15px;
 }
 /*任务详情*/
 .task-detail{
@@ -178,13 +180,13 @@ h1 {
 .remind button{
 	float: right;
 	width: 30%;
-	background: #276e90;
+	background: #00cfbc;
 	color: #fff;
 	border: 0;
 	cursor: pointer;
 }
 .remind button:hover{
-	background: #3994bf;
+	background: #00ac9c;
 }
 .remind label{
 	display: block;
@@ -205,13 +207,28 @@ h1 {
 }
 .pop-alert{
 	color: #333;
-	width: 300px;
+	min-width: 200px;
+	width: 30%;
 	height: auto;
 	padding: 15px 10px;
 	background: #fff;
 	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	border-radius: 5px;
-	box-shadow: 0 1px 2px rgba(0,0,0,.5);
+	box-shadow: 0 1px 2px rgba(0, 0, 0, .5);
+	z-index: 15;
+}
+.pop-mask {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0, 0, 0, 0.6);
+	z-index: 5;
+	transition: all 1s;
 }
 .pop-alert .pop-title{
 	font-weight: 900;
@@ -235,10 +252,10 @@ h1 {
 	width: 40%;
 }
 .confirm{
-	background: #276e90;
+	background: #00cfbc;
 }
 .confirm:hover{
-	background: #3994bf;
+	background: #00ac9c;
 }
 /*alert取消按钮*/
 .cancel{

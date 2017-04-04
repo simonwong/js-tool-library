@@ -5,7 +5,6 @@
 		$window = $(window),
 		$body = $('body'),
 		$task_delete_trigger,
-		$task_detail,
 		$task_detail_trigger,
 		$task_detail = $('.task-detail'),
 		$task_detail_mask = $('.task-detail-mask'),
@@ -340,6 +339,7 @@
 	function hideMsg() {
 		$msg.hide();
 	}
+
 
 	/*
 	* 渲染所有Task模板

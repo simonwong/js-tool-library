@@ -89,7 +89,7 @@
 
 				slider.on("mousedown", function(e) {
 					e.preventDefault();
-					console.log("mousedown");
+					// console.log("mousedown");
 					dragStartPagePosition = e.pageY;
 					dragStartScrollPosition = self.$cont[0].scrollTop;
 					dragContBarRate = self.getMaxScrollPosition() / self.getMaxSliderPosition();
