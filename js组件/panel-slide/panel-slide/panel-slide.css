@@ -1,0 +1,65 @@
+.j_panel_head {
+    height: 25px;
+    line-height: 25px;
+    padding: 0 5px;
+    background: #d0e4fe;
+    border: 1px solid #a3c0e8;
+}
+.j_panel_head .j_arrow_button.j_arrow_up,
+.j_panel_head .j_arrow_button.j_arrow_down {
+    width:20px;
+    height:20px;
+    float: right;
+    position: relative;
+    cursor: pointer;
+    z-index: 2;
+}
+.j_panel_head .j_arrow_button.j_arrow_up:before,
+.j_panel_head .j_arrow_button.j_arrow_up:after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 5;
+    border-top: 8px transparent dashed;
+    border-left: 8px transparent dashed;
+    border-right: 8px transparent dashed;
+    border-bottom: 8px transparent solid;
+}
+.j_panel_head .j_arrow_button.j_arrow_up:before {
+    border-bottom: 8px black solid;
+}
+.j_panel_head .j_arrow_button.j_arrow_up:after {
+    top: 3px;
+    border-bottom: 8px #d0e4fe solid;
+}
+
+.j_panel_head .j_arrow_button.j_arrow_down:before,
+.j_panel_head .j_arrow_button.j_arrow_down:after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 5px;
+    z-index: 5;
+    border-bottom: 8px transparent dashed;
+    border-left: 8px transparent dashed;
+    border-right: 8px transparent dashed;
+    border-top: 8px transparent solid;
+}
+.j_panel_head .j_arrow_button.j_arrow_down:before {
+    top: 8px;
+    border-top: 8px black solid;
+}
+.j_panel_head .j_arrow_button.j_arrow_down:after {
+    border-top: 8px #d0e4fe solid;
+}
+.j_panel_content {
+    width: 100%;
+    overflow: auto;
+}

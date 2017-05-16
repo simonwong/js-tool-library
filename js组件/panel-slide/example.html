@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>panel-slide-example</title>
+    <link rel="stylesheet" href="panel-slide/panel-slide.css">
+</head>
+<body>
+    
+    <div id="panel-1">
+        <div>
+            <ul>
+                <li>panel-1</li>
+                <li>panel-1</li>
+                <li>panel-1</li>
+                <li>panel-1</li>
+                <li>panel-1</li>
+            </ul>
+        </div>
+    </div>
+    <div id="panel-2">
+        <div>
+            panel-2
+        </div>
+    </div>
+    <div id="panel-3">
+        <div>panel-3</div>
+        <div>panel-3</div>
+        <div>panel-3</div>
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="panel-slide/panel-slide.js"></script>
+    <script>
+        var showFunction = function () {
+            console.log("you are click show");
+        }
+
+        panelSlide($("#panel-1"), { height: 300, isShow: false, showFn: showFunction })
+        panelSlide($("#panel-2"), { showFn: showFunction })
+        panelSlide($("#panel-3"), { showOnly: true, closeFn: showFunction })
+    </script>
+</body>
+</html>
