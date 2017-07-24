@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>事件广播与事件侦听</title>
+    <style>
+        #control {
+            text-align: center;
+            padding-top: 70px;
+        }
+        .content {
+            position: absolute;
+            top: 120px;
+        }
+        .content.left {
+            color: blue;
+            left: 160px;
+        }
+        .content.right {
+            color: green;
+            left: 320px;
+            text-align: right;
+        }
+        .content.center {
+            color: red;
+            left: 600px;
+        }
+        .content .inner {
+            width: 120px;
+            min-height: 30px;
+            padding: 0;
+            list-style: none;
+            border: 1px dashed #aaa;
+            padding: 0 5px;
+            margin: 10px -5px;
+        }
+        .content.left .inner {
+            border-right: none;
+        }
+        .content.right .inner {
+            border-left: none;
+        }
+        .content.center .inner {
+            width: 300px;
+        }
+        .content .inner li {
+            width: 0;
+            min-height: 22px;
+            line-height: 22px;
+            margin: 3px 0;
+        }
+        .content .inner li.words {
+            width: auto;
+            border: 1px solid #aaa;
+            background: #f9f9f9;
+        }
+        .content.left .inner li.words:before,
+        .content.center .inner li.words:before {
+            content: '=';
+        }
+        .content.right .inner li.words:after {
+            content: '=';
+        }
+    </style>
+</head>
+
+<body>
+    <div id="control" class="wrap">
+        <input type="text" id="controlInput" name="controlInput"/>
+    </div>
+    <div class="content left">
+        <span>left: </span>
+        <ul id="contentLeft" class="inner">
+        </ul>
+    </div>
+    <div class="content right">
+        <span> :right</span>
+        <ul id="contentRight" class="inner">
+        </ul>
+    </div>
+    <div class="content center">
+        <span>center:</span>
+        <ul id="contentCenter" class="inner">
+        </ul>
+    </div>
+
+    <script>
+        var Utils = {};
+
+        (function (Utils) {
+            if (Utils.Listener) {
+                return;
+            }
+
+            var _channels = {},
+                slice = Array.prototype.slice;
+
+            Utils.Listener = {
+                /**
+                 * 创建频道
+                 * @param  {String} channelName [频道名]
+                 */
+                createChannel: function (channelName) {
+                    if (_channels[channelName]) {
+                        traceError('Channel ' + channelName + 'has been defined!');
+                    } else {
+                        _channels[channelName] = {};
+                    }
+                },
+                /**
+                 * 添加监听函数
+                 * @param {String} channelName  [频道名]
+                 * @param {String} listenerName [监听名]
+                 * @param {fn} handler      [监听方法]
+                 */
+                add: function (channelName, listenerName, handler) {
+                    var channel = _channels[channelName];
+
+                    if (!channel) {
+                        traceError('Channel ' + channelName + ' has NOT been defined!');
+                        return;
+                    }
+                    if (channel[listenerName]) {
+                        traceError('channelName ' + listenerName + ' has been defined!');
+                        return;
+                    }
+                    channel[listenerName] = handler;
+                },
+                /**
+                 * 发出广播
+                 * @param  {Number} channelName [频道名]
+                 * @param  { } ,data...        [数据，通过arguments拿取]
+                 */
+                broadcast: function (channelName/*,data...*/) {
+                    var channel = _channels[channelName];
+
+                    if (channel) {
+                        for (var name in channel) {
+                            if (channel.hasOwnProperty(name)) {
+                                channel[name].apply(null, Array.prototype.slice.call(arguments, 1));
+                            }
+                        }
+                    }
+                },
+                /**
+                 * 发出单播
+                 * @param  {String} channelName  [频道名]
+                 * @param  {String} listenerName [监听名]
+                 * @param  { } data... [数据]
+                 */
+                unicast: function (channelName, listenerName/*, data...*/) {
+                    var channel = _channels[channelName];
+
+                    if (channel && channel[listenerName]) {
+                        channel[listenerName].apply(null, slice.call(arguments, 2));
+                    }
+                },
+                /**
+                 * 移除频道
+                 * @param  {String} channelName  [频道名]
+                 * @param  {String} listenerName [可选。不填移除整个频道。填监听名，移除该监听]
+                 */
+                remove: function (channelName, listenerName) {
+                    var channel = _channels[channelNameme];
+
+                    if (channel) {
+                        if (listenerName) {
+                            channel[listenerName] = null;
+                            delete channel[listenerName];
+                        } else {
+                            channel = null;
+                            delete _channels[channelNameme];
+                        }
+                    }
+                }
+            }
+        })(Utils);
+
+        Utils.Listener.createChannel('nameChange');
+        Utils.Listener.add('nameChange', 'changeLeft', function (data) {
+            var contentLeft = document.querySelector('#contentLeft');
+            var contentRight = document.querySelector('#contentRight');
+
+            var nodeLeft = document.createElement("LI");
+            var nodeRight = document.createElement("LI");
+            var textNode = document.createTextNode(data);
+            nodeLeft.appendChild(textNode);
+            nodeLeft.className = "words";
+
+            contentLeft.appendChild(nodeLeft);
+            contentRight.appendChild(nodeRight);
+        });
+        Utils.Listener.add('nameChange', 'changeRight', function (data) {
+            var contentLeft = document.querySelector('#contentLeft');
+            var contentRight = document.querySelector('#contentRight');
+
+            var nodeRight = document.createElement("LI");
+            var nodeLeft = document.createElement("LI");
+            var textNode = document.createTextNode(data);
+            nodeRight.appendChild(textNode);
+            nodeRight.className = "words";
+            
+            contentRight.appendChild(nodeRight);
+            contentLeft.appendChild(nodeLeft);
+        });
+        Utils.Listener.add('nameChange', 'changeCenter', function (data) {
+            var contentCenter = document.querySelector('#contentCenter');
+
+            var nodeCenter = document.createElement("LI");
+            var textNode = document.createTextNode(data);
+            nodeCenter.appendChild(textNode);
+            nodeCenter.className = "words";
+
+            contentCenter.appendChild(nodeCenter);
+        });
+
+        var controlInput = document.getElementById('controlInput');
+        var flag = true;
+
+        controlInput.addEventListener("keyup", function (e) {
+            
+            if (e.keyCode === 13) {
+                var value = controlInput.value;
+                Utils.Listener.unicast('nameChange', 'changeCenter', value);
+
+                if (flag) {
+                    console.log(1)
+                    Utils.Listener.unicast('nameChange', 'changeLeft', value);
+                    flag = false;
+                } else {
+                    Utils.Listener.unicast('nameChange', 'changeRight', value);
+                    flag = true;
+                }
+                controlInput.value = '';
+            }
+        });
+        
+    </script>
+</body>
+
+</html>
