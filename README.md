@@ -1,6 +1,10 @@
-## js工具库 ##
+# js工具库 #
 
-[TOC]
+## Usage ##
+
+> `npm install`
+
+## 目录 ##
 
 ### `debounce`防抖 ###
 
