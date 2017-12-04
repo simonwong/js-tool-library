@@ -7,6 +7,20 @@
     <title>测试</title>
 </head>
 <body>
-    
+    <button id="debounce">防抖测试按钮</button>
+    <button id="debounce_cancel">防抖测试按钮 - 取消</button>
+
+    <script src="./bundle.js"></script>
+    <script>
+        var debounceButton = document.getElementById('debounce')
+        var debounceCancelButton = document.getElementById('debounce_cancel')
+
+        var debounce = _.debounce(function () {
+            console.log('debounce')
+        }, 1000, true)
+
+        debounceButton.onclick = debounce
+        debounceCancelButton.onclick = debounce.cancel()
+    </script>
 </body>
 </html>

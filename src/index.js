@@ -1,3 +1,5 @@
-import './debounce';
+import debounce from './debounce'
 
-console.log(1)
+window._ = {
+    debounce: debounce
+}
