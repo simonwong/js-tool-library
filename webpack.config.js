@@ -11,7 +11,7 @@ module.exports = {
 
 	// npm install --save-dev webpack-dev-server
 	devServer: {
-		contentBase: "./public", // 本地服务器所加载的页面所在位置
+		contentBase: "./src", // 本地服务器所加载的页面所在位置
 		historyApiFallback: true, // 不跳转，适合单页面应用
 		inline: true // 实时刷新
 	},
