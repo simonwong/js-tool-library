@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-uA-Compatible" content="ie=edge">
+    <meta name="author" content="Simon Wong">
+    <meta name="description" content="It's my up base, website">
+    <title>Document</title>
+    <style>
+        body {
+            padding-left: 50px;
+        }
+
+        .tip {
+            color: brown;
+        }
+    </style>
+</head>
+
+<body>
+    <base href="./">(base；设置href的相对基本url; 应该放在head)</base>
+
+    <br><br>
+
+    <a href="javascript:;">(a； 创建url链接; inline)</a>
+
+    <br><br>
+
+    <abbr title="Defines an abbreviation, and usually includes its full description.">(abbr; 缩写; inline)</abbr>
+
+    <br><br>
+    
+    <b>(b; 加粗; inline)</b>
+    
+    <br><br>
+
+    <bdi>(bdi; 方向？ ; inline)</bdi>
+        
+    <br><br>
+
+    <span class="tip">(dbo; <bdo dir="rtl">可以反向</bdo>; inline)</span>
+    
+    <br><br>
+
+    <cite>(cite; 定义创意作品的来源; inline)</cite>
+    
+    <br><br>
+
+    <code>(code; 代码片段; inline)</code>
+
+    <br><br>
+
+    <data>(data; 定义链接到机器可输出的内容; inline)</data>
+
+    <br><br>
+
+    <del>(del; 定义被删除的文字; inline)</del>
+
+    <br><br>
+    
+    <ins>(ins; 定义已插入的文字; inline)</ins>
+    
+    <br><br>
+
+    <s>(s; 删除线文字; inline)</s>
+
+    <br><br>
+
+    <u>(u; 下划线文字; inline)</u>
+
+    <br><br>
+
+    <dfn>(dfn; 定义网页中的定义术语，如，World Wide Web)</dfn>
+    
+    <br><br>
+
+    <em>(em; 斜体;)</em>
+
+    <br><br>
+
+    <kbd>(kbd; 定义快捷键;ctrl + s)</kbd>
+
+    <br><br>
+
+    <mark>(mark; 高亮)</mark>
+
+    <br><br>
+
+    <q>(q; 定义简短的引用句；)</q>
+
+    <br><br>
+    
+    <samp>(samp; 定义计算器输出结果；Everything up-to-date)</samp>
+
+    <br><br>
+
+    <small>(small; 较小的打印，不重要的字)</small>
+
+    <br><br>
+
+    <span class="tip">(上下标<sub>sub</sub><sup>sup</sup>)</span>
+
+    <br><br>
+
+    (<span class="tip">定义时间</span><time datetime="2017-04-29T19:00">19:00</time>)
+
+    <br><br>
+
+    <var>(var; 定义变量)</var>
+
+
+    <hr>
+    <!-- -------------------------- hr -------------------------- -->
+    <br><br>
+
+    <address>
+        (address;
+        <br> 联系信息;
+        <br> block)
+    </address>
+
+    <br>
+
+    <span class="tip">(一个交互式区域，img; map; area;)</span>
+
+    <br>
+
+    <img src="./world-continents.png" width="320" height="160" orgwidth="320" orgheight="160" usemap="#world-continents">
+    <map name="world-continents">
+        <area title="North America" href="https://en.wikipedia.org/wiki/North_America" shape="poly" coords="48,89,67,69,77,49,140,0,68,0,6,10,4,31,16,69">
+        <area title="South America" href="https://en.wikipedia.org/wiki/South_America" shape="poly" coords="48,88,61,74,119,99,95,160,66,159">
+        <area title="Europe" href="https://en.wikipedia.org/wiki/Europe" shape="poly" coords="124,49,145,46,158,50,187,43,198,6,146,1,115,21">
+        <area title="Africa" href="https://en.wikipedia.org/wiki/Africa" shape="poly" coords="121,53,140,47,169,51,186,77,196,80,188,137,156,136,138,97,118,86">
+        <area title="Asia" href="https://en.wikipedia.org/wiki/Asia" shape="poly" coords="166,50,184,77,201,74,215,91,258,108,263,87,283,74,297,8,192,3,191,29,187,46,170,42">
+        <area title="Australia" href="https://en.wikipedia.org/wiki/Australia_(continent)" shape="poly" coords="257,107,263,85,314,89,316,137,294,151,249,132,248,114">
+    </map>
+
+    <br><br>
+
+    <span class="tip">(article; 一个文章，可以有页眉页脚部分; block)</span>
+    <article>
+        <header>(header; 网页页眉)</header>
+        <section>(section)</section>
+        <footer>(footer; 网页脚本)</footer>
+    </article>
+
+    <br><br>
+
+    <aside>
+        (aside; 侧边栏; block)
+    </aside>
+
+    <br><br>
+
+    <span class="tip">(audio; 音频; block)</span>
+    <audio src="" controls>asd</audio>
+
+    <br><br>
+
+
+    <br><br>
+
+    <blockquote>
+        (blockquote; 长引文; block)
+    </blockquote>
+
+    <table>
+        <caption>(caption; 在table中，定义table的标题)</caption>
+        <colgroup>
+            <col style="background-color: hotpink;"></col>
+            <col span="2" style="background-color: springgreen;"></col>
+        </colgroup>
+        <tr>
+            <td>John Lennon</td>
+            <td>Rhythm Guitar Guitar</td>
+        </tr>
+        <tr>
+            <td>Paul McCartney</td>
+            <td>Bass McCartney</td>
+        </tr>
+    </table>
+
+    <br><br>
+
+    <span class="tip">datalist; 定义自动完成的选项列表</span>
+    <br>
+    <input list="countries" placeholder="Type a country">
+    <datalist id="countries">
+        <option value="Argentina">
+        <option value="Bolivia">
+        <option value="Brazil">
+        <option value="Chile">
+        <option value="Colombia">
+        <option value="Ecuador">
+        <option value="Guyana">
+        <option value="Paraguay">
+        <option value="Peru">
+        <option value="Suriname">
+        <option value="Uruguay">
+        <option value="Venezuela">
+    </datalist>
+
+    <br><br>
+
+    <span class="tip">(details; 定义展示摘要，详细内容)</span>
+    <details>
+        <summary>(summary; 摘要内容;)</summary>
+        <p>详细内容 详细内容</p>
+    </details>
+
+    <br><br>
+    
+    <dialog open>
+        (dialog; 对话框;)
+    </dialog>
+
+    <br><br>
+    
+    <span class="tip">(embed; 使用外部应用容器; )</span><br>
+    <embed src="https://www.youtube.com/embed/kmk43_2dtn0" width="200" height="200">
+
+    <br><br>
+    
+    <span class="tip">(fieldset; 定义表单中的一组控件)</span>
+    <fieldset>
+        <legend>(legend; 标题)</legend>
+        <input type="text" placeholder="演员">
+    </fieldset>
+
+    <br><br>
+    
+    <span class="tip">(figure; 定义独立元素，通常是一个图像)</span>
+    <figure>
+        <img src="./world-continents.png" width="100">
+        <figcaption>(figcaption; 定义figure的标题)</figcaption>
+    </figure>
+
+    <br><br>
+    
+    <span class="tip">(hgroup; 里面只能包含标题标签)</span>
+    <hgroup>
+        <h4>标题4</h4>
+        <h6>标题6</h6>
+    </hgroup>
+
+    <br><br>
+    
+    <main>(main; 定义网站的主要内容)</main>
+
+    <br><br>
+    
+    <span class="tip">(meter; 水平仪表)</span><br>
+    <meter value="0.7">Meter</meter><br>
+    <span class="tip">(Progress; 进度条)</span><br>
+    <Progress value="0.5">Progress</Progress><br>
+    <progress value="16" max="100">Brandon</progress>
+
+    <br><br>
+    
+    <span class="tip">(nav; 导航)</span>
+    <nav>
+        <a href="javascript:;">home</a>
+        <a href="javascript:;">about</a>
+    </nav>
+
+    <br><br>
+
+    <frameset cols="50%, 50%">
+        <frame src="https://htmlreference.io/element/frameset">
+        <frame src="https://htmlreference.io/element/frame">
+        <noframes>This browser does not support framesets.</noframes>
+    </frameset>
+
+    <br><br>
+
+    <span>(noscript; 浏览器未使用js时显示)</span>
+    <noscript>Please enable JavaScript.</noscript>
+
+    <br><br>
+
+    <span>(object; 定义外部资源的容器)</span>
+    <object data="" type=""></object>
+
+    <br><br>
+
+    <span>(optgroup; 下拉框的option分组)</span>
+    <select name="" id="">
+        <optgroup label="分组1">
+            <option>qwe</option>
+            <option>asd</option>
+            <option>zxc</option>
+        </optgroup>
+        <optgroup label="分组2" disabled>
+            <option>rty</option>
+            <option>fgh</option>
+            <option>vbn</option>
+        </optgroup>
+    </select>
+
+    <br><br>
+
+    <span>(output; 输出结果)</span>
+    <form oninput="sum.value = parseInt(a.value) + parseInt(b.value)">
+        <input type="number" name="a" value="4"> +
+        <input type="number" name="b" value="7"> =
+        <output name="sum">11</output>
+    </form>
+
+    <br><br>
+
+    <span>{picture; 定义包含img}</span>
+    <picture>
+        <!-- <source
+            media="(min-width: 800px)"
+            srcset="/images/sunset-360.jpg 360w,
+                    /images/sunset-720.jpg 720w,
+                    /images/sunset-1440.jpg 1440w"
+            sizes="33.3vw">
+        <source
+            srcset="/images/sunset-720.jpg 2x,
+                    /images/sunset-360.jpg 1x">
+        <img src="/images/sunset.jpg" alt="Picture of a Ha Long Bay sunset"> -->
+    </picture>
+
+    <br><br>
+
+    <span>(pre; 定义预先格式化好的文本)</span>
+    <pre>
+        &lt;!DOCTYPE html&gt;
+        &lt;html&gt;
+            &lt;head&gt;
+            &lt;title&gt;Hello World&lt;/title&gt;
+            &lt;/head&gt;
+            &lt;body&gt;
+            &lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec viverra nec nulla vitae mollis.&lt;/p&gt;
+            &lt;/body&gt;
+        &lt;/html&gt;
+    </pre>
+
+    <br><br>
+
+    <span class="tip">ruby; 注释东亚人的发音</span><br>
+    <span class="tip">rt; ruby发音的注释</span><br>
+    <span class="tip">rtc; 文本显示容器</span><br>
+    <span class="tip">rp; 浏览器不支持ruby时显示</span><br>
+    <ruby>
+        漢 <rp>(</rp><rt>Kan</rt><rp>)</rp>
+        字 <rp>(</rp><rt>ji</rt><rp>)</rp>
+        <rtc>San Francisco</rtc>
+    </ruby>
+
+    <br><br>
+
+    <span class="tip">track; 字幕文本轨道</span>
+    <audio src="">
+        <track></track>
+    </audio>
+
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+    <br><br>
+
+</body>
+
+</html>
